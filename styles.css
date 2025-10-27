@@ -461,11 +461,43 @@ section {
 }
 
 .contact-form {
+    padding-bottom: 20px;
     flex: 1;
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.map-container {
+    flex: 1;
+    background-color: white;
+  
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: 400px;
+  
+    margin: 20px;
+}
+
+.map-container h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+
+}
+
+#map .map{
+    height: 400px;
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 100%;
+
+  
+
+
+
 }
 
 .form-group {
@@ -547,41 +579,45 @@ footer {
         flex-direction: column;
         text-align: center;
     }
-    
+
     nav ul {
         margin-top: 1rem;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     nav ul li {
         margin: 0.5rem;
     }
-    
+
     .hero h1 {
         font-size: 2.2rem;
     }
-    
+
     .about-content {
         flex-direction: column;
     }
-    
+
     .about-images {
         margin-top: 2rem;
     }
-    
+
     .about-image.secondary-image {
         flex-direction: column;
     }
-    
+
     .about-image.secondary-image img {
         height: 150px;
     }
-    
+
     .contact-content {
         flex-direction: column;
     }
-    
+
+    .map-container {
+        margin-top: 2rem;
+    }
+
     .footer-content {
         flex-direction: column;
         gap: 2rem;
