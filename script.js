@@ -84,28 +84,72 @@ uploadArea.addEventListener('drop', function(e) {
     fileInput.dispatchEvent(event);
 });
 
-// Contact Form Submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you for your message! We will get back to you soon.');
-    this.reset();
+// Contact Form Submission - Removed to allow API submission
+// document.getElementById('contactForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     alert('Thank you for your message! We will get back to you soon.');
+//     this.reset();
+// });
+
+// Google Maps initialization
+function initMap() {
+    // Load Google Maps API if not already loaded
+    if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+        return;
+    }
+
+    // Nairobi coordinates (adjust as needed)
+    const location = { lat: -1.286389, lng: 36.817223 };
+
+    const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: location,
+        styles: [
+            {
+                featureType: 'all',
+                elementType: 'geometry.fill',
+                stylers: [{ color: '#f5f5f5' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'geometry.fill',
+                stylers: [{ color: '#c9c9c9' }]
+            }
+        ]
+    });
+
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: 'CyberCloud Kenya'
+    });
+}
+
+// Initialize map when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initMap();
 });
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
-            
+
             // Close mobile menu if open
             document.querySelector('nav ul').classList.remove('show');
         }
